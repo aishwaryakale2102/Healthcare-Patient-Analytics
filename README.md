@@ -2,31 +2,21 @@
 
 ## Project Overview
 
-The Healthcare Patient Analytics Dashboard is a comprehensive healthcare analytics project developed using Python, SQL, and Power BI. The project focuses on analyzing patient healthcare data to identify trends, monitor patient health conditions, and generate meaningful business and healthcare insights through interactive dashboards and visualizations.
+The Healthcare Patient Analytics Dashboard is a data analytics and visualization project developed using Python and Power BI. The project focuses on analyzing healthcare patient data to identify disease patterns, patient demographics, BMI trends, blood pressure analysis, cholesterol analysis, and treatment insights through interactive dashboards.
 
-This project demonstrates end-to-end data analytics workflow including:
-- Data generation and preprocessing
-- Data cleaning and transformation
+This project demonstrates an end-to-end analytics workflow including:
+- Dataset generation
+- Data cleaning
 - Exploratory Data Analysis (EDA)
-- SQL database analysis
+- KPI analysis
 - DAX calculations
-- Power BI dashboard development
-- Data storytelling and KPI reporting
-
-The dashboard helps healthcare organizations analyze patient demographics, disease patterns, BMI trends, blood pressure analysis, cholesterol analysis, and treatment plans to support data-driven healthcare decisions.
+- Interactive Power BI dashboard development
 
 ---
 
 # Problem Statement
 
-Healthcare organizations manage large amounts of patient data daily. Analyzing this data manually becomes difficult and inefficient, especially when identifying disease trends, patient demographics, health indicators, and treatment patterns.
-
-This project aims to build an interactive healthcare analytics dashboard that enables healthcare professionals and analysts to:
-- Monitor patient statistics
-- Analyze disease distribution
-- Track health indicators
-- Improve healthcare reporting
-- Generate operational insights
+Healthcare organizations generate large amounts of patient data daily. Analyzing this data manually becomes difficult and time-consuming. This project aims to build an interactive healthcare analytics dashboard to monitor patient statistics, identify disease trends, and generate healthcare insights for better decision-making.
 
 ---
 
@@ -35,10 +25,9 @@ This project aims to build an interactive healthcare analytics dashboard that en
 - Analyze healthcare patient records
 - Perform data cleaning and preprocessing
 - Conduct exploratory data analysis
-- Build SQL-based healthcare analysis queries
-- Create interactive Power BI dashboards
-- Generate KPI metrics and healthcare insights
-- Visualize patient health trends
+- Create KPI metrics using DAX
+- Build interactive Power BI dashboards
+- Visualize healthcare trends and insights
 
 ---
 
@@ -46,158 +35,61 @@ This project aims to build an interactive healthcare analytics dashboard that en
 
 | Technology | Purpose |
 |------------|----------|
-| Python | Data generation & preprocessing |
+| Python | Data preprocessing |
 | Pandas | Data manipulation |
+| NumPy | Dataset generation |
 | Matplotlib | Data visualization |
-| SQLite | SQL database analysis |
-| SQL | Data querying |
 | Power BI | Dashboard development |
 | DAX | KPI calculations |
 
 ---
 
-# Dataset Description
+# Dataset Features
 
-The dataset contains synthetic healthcare patient records with the following features:
+The dataset contains healthcare patient information including:
 
 | Column Name | Description |
 |-------------|-------------|
 | Patient_ID | Unique patient identifier |
 | Age | Patient age |
 | Gender | Patient gender |
-| Diagnosis | Disease/health condition |
+| Diagnosis | Patient diagnosis |
 | BMI | Body Mass Index |
 | Blood_Pressure | Blood pressure reading |
 | Heart_Rate | Heart rate value |
 | Cholesterol_Level | Cholesterol measurement |
 | Treatment_Plan | Assigned treatment |
-| Follow_Up_Date | Patient follow-up date |
-
-Additional business-related fields were added for analytics purposes:
-- Facility_ID
-- Dialysis_Station_ID
-- Billing Analysis
-- Patient Statistics
+| Follow_Up_Date | Follow-up appointment date |
 
 ---
 
 # Project Workflow
 
 ## 1. Dataset Creation
-A synthetic healthcare dataset was generated using Python libraries such as:
-- Pandas
-- NumPy
-- Random
-
----
+Generated a synthetic healthcare dataset using Python libraries.
 
 ## 2. Data Cleaning
+Performed:
+- Duplicate removal
+- Missing value handling
+- Data formatting
+- Column validation
 
-The following preprocessing steps were performed:
-
-- Removed duplicate records
-- Handled missing values
-- Converted data types
-- Standardized categorical values
-- Validated numerical columns
-- Prepared data for SQL and Power BI analysis
-
----
-
-# Python Data Cleaning Example
-
-```python
-df.drop_duplicates(inplace=True)
-
-df['Treatment_Plan'].fillna(
-    'Unknown',
-    inplace=True
-)
-
-df['Gender'] = df['Gender'].str.title()
-```
-
----
-
-# Exploratory Data Analysis (EDA)
-
-The following analyses were performed:
-
-- Age distribution analysis
-- Disease distribution analysis
-- Gender analysis
-- BMI trend analysis
+## 3. Exploratory Data Analysis (EDA)
+Analyzed:
+- Disease distribution
+- Gender distribution
+- BMI trends
 - Blood pressure analysis
 - Cholesterol analysis
 
----
-
-# SQL Analysis
-
-SQLite database was connected with Python to perform SQL analysis on healthcare data.
-
-## SQL Queries Performed
-
-### Total Patients
-
-```sql
-SELECT COUNT(*) AS Total_Patients
-FROM patients;
-```
-
-### Disease Distribution
-
-```sql
-SELECT
-    Diagnosis,
-    COUNT(*) AS Patient_Count
-FROM patients
-GROUP BY Diagnosis;
-```
-
-### Average BMI
-
-```sql
-SELECT
-    AVG(BMI) AS Average_BMI
-FROM patients;
-```
-
-### Blood Pressure Analysis
-
-```sql
-SELECT
-    Diagnosis,
-    AVG(Blood_Pressure) AS Avg_BP
-FROM patients
-GROUP BY Diagnosis;
-```
-
----
-
-# Power BI Dashboard
-
-An interactive Power BI dashboard was developed to visualize healthcare insights.
-
-## Dashboard Components
-
-### KPI Cards
-- Total Patients
-- Average Age
-- Average BMI
-- Diagnosis Count
-
-### Charts & Visualizations
-- Disease Distribution Chart
-- Gender Distribution Pie Chart
-- BMI Trend Analysis
-- Blood Pressure Analysis
-- Cholesterol Analysis
-
-### Interactive Features
-- Diagnosis slicer
-- Gender slicer
-- Treatment Plan slicer
+## 4. Power BI Dashboard Development
+Created an interactive healthcare dashboard using:
+- KPI cards
+- Pie charts
+- Bar charts
+- Line charts
+- Slicers and filters
 
 ---
 
@@ -231,38 +123,39 @@ Diagnosis_Count =
 DISTINCTCOUNT('healthcare_dataset'[Diagnosis])
 ```
 
-## Male Patients
+---
 
-```DAX
-Male_Patients =
-CALCULATE(
-    COUNTROWS('healthcare_dataset'),
-    'healthcare_dataset'[Gender] = "Male"
-)
-```
+# Dashboard Features
+
+- Total Patients KPI
+- Average Age KPI
+- Average BMI KPI
+- Diagnosis Analysis
+- Disease Distribution
+- Gender Distribution
+- Blood Pressure Analysis
+- BMI Trend Analysis
+- Interactive Filters & Slicers
 
 ---
 
-# Dashboard Insights
-
-The dashboard generated the following healthcare insights:
+# Key Insights
 
 - Hypertension and Hyperlipidemia were among the most common diagnoses.
-- Male patients represented a slightly higher proportion of total healthcare cases.
-- Higher BMI values showed correlation with elevated blood pressure.
-- Diabetes patients demonstrated increased cholesterol levels.
-- Certain treatment plans were more frequently assigned to chronic patients.
+- Male patients represented a slightly higher percentage of total cases.
+- Higher BMI values were associated with increased blood pressure levels.
+- Diabetes patients showed elevated cholesterol measurements compared to healthy patients.
 
 ---
 
 # Dashboard Design
 
 The dashboard was designed using:
-- Professional healthcare color palette
+- Healthcare-themed color palette
 - KPI-focused layout
-- Interactive filters
+- Interactive filtering
 - Clean visual hierarchy
-- Responsive chart arrangement
+- Professional dashboard formatting
 
 ---
 
@@ -272,12 +165,9 @@ The dashboard was designed using:
 Healthcare-Patient-Analytics/
 │
 ├── healthcare_dataset.csv
-├── cleaned_healthcare_dataset.csv
-├── healthcare_analysis.db
 ├── healthcare_dashboard.pbix
 ├── healthcare_analysis.ipynb
-├── SQL_queries.sql
-├── images/
+├── screenshots/
 └── README.md
 ```
 
@@ -287,42 +177,30 @@ Healthcare-Patient-Analytics/
 
 - Data Cleaning
 - Exploratory Data Analysis
-- SQL Query Writing
-- Database Integration
-- DAX Calculations
 - Power BI Dashboarding
-- Data Visualization
+- DAX Calculations
 - KPI Reporting
-- Business Intelligence
+- Data Visualization
 - Healthcare Analytics
+- Business Intelligence
 
 ---
 
-# Future Enhancements
+# Future Improvements
 
-Future improvements planned for this project include:
-
-- Machine Learning integration
-- Patient risk prediction
-- Real-time healthcare analytics
+Future enhancements planned:
+- SQL integration
+- Real-time healthcare data
+- Machine Learning predictions
+- Patient risk analysis
 - Streamlit deployment
-- Cloud database integration
 - Advanced healthcare KPIs
-- Predictive healthcare insights
 
 ---
 
 # Conclusion
 
-This project demonstrates a complete healthcare analytics workflow using Python, SQL, and Power BI. It highlights the ability to clean, analyze, visualize, and generate insights from healthcare patient data while building interactive dashboards for business intelligence and healthcare decision-making.
-
-The project strengthens practical skills in:
-- Data Analytics
-- Healthcare Domain Analysis
-- SQL
-- Power BI
-- Dashboard Development
-- Business Intelligence
+This project demonstrates a complete healthcare analytics workflow using Python and Power BI. It highlights practical skills in data cleaning, analysis, visualization, KPI development, and dashboard creation for healthcare analytics and business intelligence applications.
 
 ---
 
@@ -331,5 +209,3 @@ The project strengthens practical skills in:
 ## Aishwarya Kale
 
 B.Tech Artificial Intelligence & Data Science
-
----
